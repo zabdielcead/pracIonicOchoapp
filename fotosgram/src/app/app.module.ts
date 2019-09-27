@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http'; // llamadas a servicios
+import { IonicStorageModule } from '@ionic/storage'; // ionicstorage
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http'; // llamadas a servicios
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot() // for root es una coleccion de servicios
   ],
   providers: [
     StatusBar,
