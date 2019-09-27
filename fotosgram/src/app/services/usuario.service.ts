@@ -80,4 +80,5 @@ export class UsuarioService {
             }
           });
   });
+  }
 }
