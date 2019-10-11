@@ -22,15 +22,19 @@
     </ion-item>
 
     <!-- ngif imagenes-->
-    <ion-slides pager="true">
-        <ion-slide class="image-slide" [style]="img1 | domSanitazer">
+    <ion-slides pager="true" *ngIf="post.img.length > 1">
+
+        <ion-slide class="image-slide" *ngFor="let img of post.img" [style]=" (img | imagen: post.usuario._id) | domSanitazer">
+            <!-- (img | imagen: post.usuario._id) primero pasa por este pipe | imagen  y luego por el pipe domsanitazer  -->
         </ion-slide>
-        <ion-slide class="image-slide" [style]="img2 | domSanitazer">
-        </ion-slide>
-        <ion-slide class="image-slide" [style]="img3 | domSanitazer">
+    </ion-slides>
+    <ion-slides pager="true" *ngIf="post.img.length === 1" [options]="slideSoloOpts">
+        <ion-slide class="image-slide" [style]="(post.img[0] | imagen: post.usuario._id) | domSanitazer">
         </ion-slide>
     </ion-slides>
     <!-- mapa -->
+    <app-mapa [coords]="post.coords" *ngIf="post.coords"></app-mapa>
+
     <ion-item lines="none">
         <ion-icon slot="start" name="heart-empty"></ion-icon>
         <ion-icon slot="end" name="bookmark"></ion-icon>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UiServiceService {
   // centralizar las peticiones de alertas, toasts, etc
-  constructor(private  alertController: AlertController) { }
+  constructor(private  alertController: AlertController, private toastController: ToastController) { }
 
   async alertaInformativa(message: string) {
     const alert = await this.alertController.create({
@@ -16,4 +16,14 @@ export class UiServiceService {
 
     await alert.present();
   }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: 'Your settings have been saved.',
+      position: 'top',
+      duration: 1500
+    });
+    toast.present();
+  }
+
 }

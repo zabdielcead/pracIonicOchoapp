@@ -17,6 +17,11 @@ export class Tab1Page implements OnInit {
   // https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related
   ngOnInit() {
    this.siguientes();
+   this.postsService.nuevoPost
+       .subscribe( post => {
+        // para poner el post hasta arriba
+        this.posts.unshift( post );
+       });
   }
 
   recargar(event) {
